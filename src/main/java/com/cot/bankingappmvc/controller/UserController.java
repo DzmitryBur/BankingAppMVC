@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -18,6 +20,8 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Autowired
+    UserService dao;
 
     @GetMapping("/user/{id}")
     public String giveJspView(@PathVariable int id, ModelMap map){
@@ -27,8 +31,17 @@ public class UserController {
         return "resultUser";
     }
 
+    @PostMapping("/users")
+    public String addUser(
+            @RequestParam String name,
+            @RequestParam String industry,
+            @RequestParam String residency,
+            ModelMap map) {
+        dao.addUser(name, industry, residency);
+        map.addAttribute("users", dao.getAllUsers());
+        return "resultUser";
+    }
 
-//    @PostMapping
 //    @PutMapping
 //    @DeleteMapping
 }

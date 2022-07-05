@@ -13,5 +13,6 @@
 </head>
 <body>
 Your user: ${someUser}
+<p>Users: ${users}</p>
 </body>
 </html>
