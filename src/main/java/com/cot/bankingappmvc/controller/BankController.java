@@ -1,7 +1,7 @@
 package com.cot.bankingappmvc.controller;
 
-import com.cot.bankingappmvc.model.User;
-import com.cot.bankingappmvc.service.UserService;
+import com.cot.bankingappmvc.model.Bank;
+import com.cot.bankingappmvc.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-public class UserController {
+public class BankController {
 
-    UserService userService;
+    BankService bankService;
 
     @Autowired
-    public UserController(UserService userService){
-        this.userService = userService;
+    public BankController(BankService bankService){
+        this.bankService = bankService;
     }
 
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/bank/{id}")
     public String giveJspView(@PathVariable int id, ModelMap map){
 //        System.out.println("Тут будет бизнес логика!!");
-        User user = userService.getUserBuId(id);
-        map.addAttribute("someUser", user.toString() );
-        return "resultUser";
+        Bank bank = bankService.getBankBuId(id);
+        map.addAttribute("someBank", bank.toString() );
+        return "resultBank";
     }
 
 
@@ -32,3 +32,4 @@ public class UserController {
 //    @PutMapping
 //    @DeleteMapping
 }
+

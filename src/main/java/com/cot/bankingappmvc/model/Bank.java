@@ -4,20 +4,18 @@ package com.cot.bankingappmvc.model;
 import org.springframework.stereotype.Component;
 
 @Component
-public class User {
+public class Bank {
 
     long id;
     String name;
-    String industry;
-    String residency;
+    String swift;
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Bank{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", industry='" + industry + '\'' +
-                ", residency='" + residency + '\'' +
+                ", swift='" + swift + '\'' +
                 '}';
     }
 
@@ -37,20 +35,11 @@ public class User {
         this.name = name;
     }
 
-    public String getIndustry() {
-        return industry;
+    public String getSwift() {
+        return swift;
     }
 
-    public void setIndustry(String industry) {
-        this.industry = industry;
-    }
-
-    public String getResidency() {
-        return residency;
-    }
-
-    public void setResidency(String residency) {
-        this.residency = residency;
+    public void setSwift(String swift) {
+        this.swift = swift;
     }
 }
-
