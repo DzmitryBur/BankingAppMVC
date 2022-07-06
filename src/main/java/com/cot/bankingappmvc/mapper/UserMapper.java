@@ -11,16 +11,9 @@ import java.sql.SQLException;
 @Component
 public class UserMapper implements RowMapper<User> {
 
-    User user;
-
-    @Autowired
-    public UserMapper(User user) {
-        this.user = user;
-    }
-
-
     @Override
     public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+        User user = new User();
         user.setId(rs.getLong("id"));
         user.setName(rs.getString("name"));
         user.setIndustry(rs.getString("industry"));
@@ -30,3 +23,5 @@ public class UserMapper implements RowMapper<User> {
         return user;
     }
 }
+
+

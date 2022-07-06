@@ -1,35 +1,60 @@
 package com.cot.bankingappmvc.controller;
 
 import com.cot.bankingappmvc.model.Bank;
+import com.cot.bankingappmvc.repository.BankRepository;
 import com.cot.bankingappmvc.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class BankController {
 
-    BankService bankService;
+    private BankRepository bankRepository;
 
     @Autowired
-    public BankController(BankService bankService){
-        this.bankService = bankService;
+    public BankController(BankRepository bankRepository){
+        this.bankRepository = bankRepository;
     }
 
 
-    @GetMapping("/bank/{id}")
-    public String giveJspView(@PathVariable int id, ModelMap map){
-//        System.out.println("Тут будет бизнес логика!!");
-        Bank bank = bankService.getBankBuId(id);
-        map.addAttribute("someBank", bank.toString() );
+    @GetMapping("/getBanks")
+    public String getAllBanks(ModelMap map) {
+        List<Bank> list = bankRepository.getAllBanks();
+        map.addAttribute("list", list);
+//        map.addAttribute("someBank", bank.toString() );
         return "resultBank";
     }
 
+    @GetMapping("/getBanks/{id}")
+    public String getBank(@PathVariable long id, ModelMap map) {
+        Bank bank = bankRepository.getBank(id);
+        map.addAttribute("list", bank);
+//        map.addAttribute("someBank", bank.toString() );
+        return "resultBank";
+    }
+    @PostMapping("/createBanks")
+    public String createBank(@RequestParam String name, String swift) {
+        if (bankRepository.createBank(name, swift) == 1) {
+            return "successfully";
+        } else {
+            return "unsuccessfully";
+        }
+    }
 
-//    @PostMapping
-//    @PutMapping
-//    @DeleteMapping
+    @PutMapping("/updateBanks")
+    public void updateBank(@RequestParam long id, String name, String swift) {
+        bankRepository.updateBank(id, name, swift);
+    }
+
+    @DeleteMapping("/deleteBanks/{id}")
+    public void deleteBank(@PathVariable long id) {
+        bankRepository.deleteBank(id);
+    }
+
+
 }
 

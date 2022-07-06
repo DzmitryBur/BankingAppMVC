@@ -12,6 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-Your bank: ${someBank}
+${list}
 </body>
 </html>

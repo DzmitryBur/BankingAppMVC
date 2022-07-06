@@ -7,9 +7,13 @@ import java.util.List;
 
 @Repository
 public interface UserRepository {
-    User getUserBuId(int id);
-
     List<User> getAllUsers();
-    int addUser(User user);
-    int addUser(String name, String industry, String residency, String login, String password);
+
+    User getUser(long id);
+
+    int createUser(String name, String industry, String residency, String login, String password);
+
+    void updateUser(long id, String name, String industry, String residency, String login, String password);
+
+    void deleteUser(long id);
 }

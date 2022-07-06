@@ -11,12 +11,12 @@ import javax.sql.DataSource;
 public class Config {
 
     @Bean
-    public JdbcTemplate getJDBC() {
+    public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(getDataSource());
     }
 
     @Bean
-    DataSource getDataSource() {
+    public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
