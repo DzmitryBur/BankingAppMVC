@@ -36,8 +36,10 @@ public class UserController {
             @RequestParam String name,
             @RequestParam String industry,
             @RequestParam String residency,
+            @RequestParam String login,
+            @RequestParam String password,
             ModelMap map) {
-        dao.addUser(name, industry, residency);
+        dao.addUser(name, industry, residency, login, password);
         map.addAttribute("users", dao.getAllUsers());
         return "resultUser";
     }

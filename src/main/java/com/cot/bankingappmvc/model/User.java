@@ -10,6 +10,8 @@ public class User {
     String name;
     String industry;
     String residency;
+    String login;
+    String password;
 
     @Override
     public String toString() {
@@ -18,6 +20,8 @@ public class User {
                 ", name='" + name + '\'' +
                 ", industry='" + industry + '\'' +
                 ", residency='" + residency + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -51,6 +55,22 @@ public class User {
 
     public void setResidency(String residency) {
         this.residency = residency;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 

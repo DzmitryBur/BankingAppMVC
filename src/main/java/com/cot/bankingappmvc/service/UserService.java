@@ -39,8 +39,8 @@ public class UserService implements UserRepository {
     }
 
     @Override
-    public int addUser(String name, String industry, String residency) {
-        return jdbcTemplate.update("INSERT INTO users(id,name,industry,residency) VALUES (DEFAULT ,?,?,?)", name, industry, residency);
+    public int addUser(String name, String industry, String residency, String login, String password) {
+        return jdbcTemplate.update("INSERT INTO users(id,name,industry,residency,login,password) VALUES (DEFAULT ,?,?,?,?,?)", name, industry, residency, login, password);
     }
 
 //

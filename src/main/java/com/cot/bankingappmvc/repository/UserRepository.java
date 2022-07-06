@@ -11,5 +11,5 @@ public interface UserRepository {
 
     List<User> getAllUsers();
     int addUser(User user);
-    int addUser(String name, String industry, String residency);
+    int addUser(String name, String industry, String residency, String login, String password);
 }
