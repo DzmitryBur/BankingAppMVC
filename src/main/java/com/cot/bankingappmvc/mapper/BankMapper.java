@@ -1,8 +1,6 @@
 package com.cot.bankingappmvc.mapper;
 
 import com.cot.bankingappmvc.model.Bank;
-import com.cot.bankingappmvc.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 

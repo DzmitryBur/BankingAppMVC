@@ -2,7 +2,6 @@ package com.cot.bankingappmvc.controller;
 
 import com.cot.bankingappmvc.model.Bank;
 import com.cot.bankingappmvc.repository.BankRepository;
-import com.cot.bankingappmvc.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
